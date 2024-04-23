@@ -18,7 +18,12 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended:  false }));
 app.use(bodyParser.json());
-app.use(cors())
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', '*'); // Replace with your frontend origin
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE'); // Allowed HTTP methods
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization'); // Allowed headers
+    next();
+});
 
 
 //routes middleware
