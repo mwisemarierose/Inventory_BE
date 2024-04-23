@@ -18,12 +18,7 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(express.urlencoded({ extended:  false }));
 app.use(bodyParser.json());
-app.use(
-    cors({
-      origin: ["https://inventory-be-z8nv.onrender.com", "https://kmdinventory.netlify.app"],
-      credentials: true,
-    })
-  );
+app.use(cors())
 
 
 //routes middleware
