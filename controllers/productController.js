@@ -95,7 +95,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
         throw new Error('User not authorized');
     }
 
-    await product.remove();
+    await product.deleteOne();
     res.status(200).json({message: 'Product removed'});
 })
 
