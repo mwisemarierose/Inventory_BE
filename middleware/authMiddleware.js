@@ -5,10 +5,9 @@ const User = require('../models/userModel');
 const protect = asyncHandler(async (req, res, next) => {
     try{
         const token = req.headers.token;
-        console.log("token",token);
         if(!token){
             res.status(401);
-            throw new Error('Not authorized, please login');
+            throw new Error('Not authorized, please login1');
         }
 
         //verify token
@@ -17,10 +16,11 @@ const protect = asyncHandler(async (req, res, next) => {
         
         //get user from token
         const user = await User.findById(verified.id).select('-password');
+        console.log("user",user)
 
         if(!user){
             res.status(401);
-            throw new Error('Not authorized, token failed');
+            throw new Error('Not authorized, token failed2');
         }
 
         req.user = user;
